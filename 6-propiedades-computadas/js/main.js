@@ -20,6 +20,17 @@ new Vue({
             },
         ]
     },
+    computed: {
+        tareasConPrioridad() {
+            return this.tareas.filter((tarea) => tarea.prioridad);
+        },
+        mensajeAlReves() {
+            return this.mensaje.split('').reverse().join('');
+        },
+        tareasPorAntiguedad() {
+            return this.tareas.sort((a, b) => b.antiguedad - a.antiguedad);
+        }
+    },
     methods: {
         agregarTarea() {
             // this, hace referencia a la instancia Vue
@@ -31,15 +42,4 @@ new Vue({
             this.nuevaTarea = null;
         },
     },
-    computed: {
-        tareasConPrioridad() {
-            return this.tareas.filter((tarea) => tarea.prioridad);
-        },
-        mensajeAlReves() {
-            return this.mensaje.split('').reverse().join('');
-        },
-        tareasPorAntiguedad() {
-            return this.tareas.sort((a, b) => b.antiguedad - a.antiguedad);
-        }
-    }
 });
